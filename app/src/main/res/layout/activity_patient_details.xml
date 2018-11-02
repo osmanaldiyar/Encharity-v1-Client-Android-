@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PatientDetailsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="5dp"
+        card_view:cardElevation="2dp"
+        card_view:cardCornerRadius="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            >
+            <ImageView android:id="@+id/patient_image"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1.0"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="4dp"
+                />
+            <TextView
+                android:id="@+id/patient_fullname"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginBottom="4dp"
+                />
+            <TextView
+                android:id="@+id/patient_category"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginBottom="4dp"
+                />
+            <TextView
+                android:id="@+id/patient_description"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="4dp"/>
+
+            <!--ProgressBar-->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="20" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/totalTenge"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/fundedPercent"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/daysLeft"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="5dp"
+                />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <!--
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="com.encharity.encharity_v1.fragments.InvestmentsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+    <FrameLayout
+        android:id="@+id/investments_card_viewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/status_updates_card_viewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </FrameLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_paypal"
+            android:onClick="onClickDonate"/>
+    </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>
+
+
+
+</android.support.v4.widget.NestedScrollView>
