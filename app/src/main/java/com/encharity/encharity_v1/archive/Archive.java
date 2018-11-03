@@ -1,9 +1,58 @@
 package com.encharity.encharity_v1.archive;
 
-import com.encharity.encharity_v1.R;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+public class Archive {
+
+    @SerializedName("archiveId")
+    @Expose
+    private Integer archiveId;
+    @SerializedName("archivePhotoId")
+    @Expose
+    private Integer archivePhotoId;
+    @SerializedName("archiveTitle")
+    @Expose
+    private String archiveTitle;
+    @SerializedName("archiveDescription")
+    @Expose
+    private String archiveDescription;
+
+    public Integer getArchiveId() {
+        return archiveId;
+    }
+
+    public void setArchiveId(Integer archiveId) {
+        this.archiveId = archiveId;
+    }
+
+    public Integer getArchivePhotoId() {
+        return archivePhotoId;
+    }
+
+    public void setArchivePhotoId(Integer archivePhotoId) {
+        this.archivePhotoId = archivePhotoId;
+    }
+
+    public String getArchiveTitle() {
+        return archiveTitle;
+    }
+
+    public void setArchiveTitle(String archiveTitle) {
+        this.archiveTitle = archiveTitle;
+    }
+
+    public String getArchiveDescription() {
+        return archiveDescription;
+    }
+
+    public void setArchiveDescription(String archiveDescription) {
+        this.archiveDescription = archiveDescription;
+    }
+
+}
+
+/*
 public class Archive {
 
 
@@ -38,3 +87,4 @@ public class Archive {
         return description;
     }
 }
+*/

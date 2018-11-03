@@ -13,11 +13,16 @@ import android.widget.TextView;
 
 import com.encharity.encharity_v1.R;
 
+import java.util.List;
+
 public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.ViewHolder> {
 
-    private int[] images;
+    /*private int[] images;
     private String[] titles;
-    private String[] descriptions;
+    private String[] descriptions;*/
+
+
+    private List<Archive> archiveList;
     private Listener listener;
 
     public interface Listener{
@@ -28,10 +33,16 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.ViewHold
         this.listener = listener;
     }
 
-    public ArchiveAdapter(int[] images, String[] titles, String[] descriptions) {
-        this.images = images;
+    public ArchiveAdapter(List<Archive> archiveList/*int[] images, String[] titles, String[] descriptions*/) {
+        this.archiveList = archiveList;
+        /*this.images = images;
         this.titles = titles;
-        this.descriptions = descriptions;
+        this.descriptions = descriptions;*/
+    }
+
+    public void setArchiveList(List<Archive> archiveList) {
+        this.archiveList = archiveList;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -63,10 +74,10 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.ViewHold
         TextView titleTextView = (TextView) cardView.findViewById(R.id.archive_title);
         TextView descriptionTextView = (TextView) cardView.findViewById(R.id.archive_description);
 
-        Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), images[i]);
+        Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), R.drawable.kid1);
         imageView.setImageDrawable(drawable);
-        titleTextView.setText(titles[i]);
-        descriptionTextView.setText(descriptions[i]);
+        titleTextView.setText(archiveList.get(i).getArchiveTitle());
+        descriptionTextView.setText(archiveList.get(i).getArchiveDescription());
 
         cardView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,6 +92,6 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return images.length;
+        return archiveList.size();
     }
 }

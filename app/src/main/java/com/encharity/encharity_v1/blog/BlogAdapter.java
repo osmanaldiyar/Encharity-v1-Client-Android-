@@ -13,25 +13,34 @@ import android.widget.TextView;
 
 import com.encharity.encharity_v1.R;
 
+import java.util.List;
+
 public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
 
-    private int[] images;
+    /*private int[] images;
     private String[] titles;
-    private String[] descriptions;
+    private String[] descriptions;*/
+    private List<Blog> blogList;
     private BlogAdapter.Listener listener;
 
     public interface Listener{
         void onClick(int position);
     }
 
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+        notifyDataSetChanged();
+    }
+
     public void setListener(BlogAdapter.Listener listener) {
         this.listener = listener;
     }
 
-    public BlogAdapter(int[] images, String[] titles, String[] descriptions) {
-        this.images = images;
+    public BlogAdapter(List<Blog> blogList/*int[] images, String[] titles, String[] descriptions*/) {
+        this.blogList= blogList;
+        /*this.images = images;
         this.titles = titles;
-        this.descriptions = descriptions;
+        this.descriptions = descriptions;*/
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -63,10 +72,10 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
         TextView titleTextView = (TextView) cardView.findViewById(R.id.blog_title);
         TextView descriptionTextView = (TextView) cardView.findViewById(R.id.blog_description);
 
-        Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), images[i]);
+        Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), R.drawable.kid2);
         imageView.setImageDrawable(drawable);
-        titleTextView.setText(titles[i]);
-        descriptionTextView.setText(descriptions[i]);
+        titleTextView.setText(blogList.get(i).getBlogTitle());
+        descriptionTextView.setText(blogList.get(i).getBlogDescription());
 
         cardView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,6 +90,6 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return images.length;
+        return blogList.size();
     }
 }
