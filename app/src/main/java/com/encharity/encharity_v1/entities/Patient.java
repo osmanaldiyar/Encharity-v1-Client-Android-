@@ -35,7 +35,7 @@ public class Patient {
     @Expose
     private String city;
 
-    public Patient(int patientId, int photoId, String fullname, String category, String description, String totalTenge,
+    /*public Patient(int patientId, int photoId, String fullname, String category, String description, String totalTenge,
                    String fundedPercent, String daysLeft, String city) {
         this.patientId = patientId;
         this.photoId = photoId;
@@ -46,7 +46,7 @@ public class Patient {
         this.fundedPercent = fundedPercent;
         this.daysLeft = daysLeft;
         this.city = city;
-    }
+    }*/
 
     public int getPatientId() {
         return patientId;

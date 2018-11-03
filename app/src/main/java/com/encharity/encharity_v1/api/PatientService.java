@@ -14,6 +14,6 @@ public interface PatientService {
     Call<List<Patient>> getAllPatients();
 
     @GET("allPatients/patients/{id}")
-    Call<List<Patient>> getPatient(@Path("id") int id);
+    Call<Patient> getPatient(@Path("id") int id);
 
 }

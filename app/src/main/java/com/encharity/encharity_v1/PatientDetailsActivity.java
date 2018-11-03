@@ -29,7 +29,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PatientDetailsActivity extends AppCompatActivity{
 
     public static String EXTRA_PATIENT_ID = "id";
-    private List<Patient> patientList;
+    private Patient patient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class PatientDetailsActivity extends AppCompatActivity{
 
         //
 
-        patientList = new ArrayList<>();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.1.195:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -62,20 +63,55 @@ public class PatientDetailsActivity extends AppCompatActivity{
 
         PatientService patientService = retrofit.create(PatientService.class);
         int patientId = (Integer)getIntent().getExtras().getInt(EXTRA_PATIENT_ID);
-        Call<List<Patient>> repos = patientService.getPatient(patientId);
+        Call<Patient> repos = patientService.getPatient(patientId);
 
-        repos.enqueue(new Callback<List<Patient>>() {
+        repos.enqueue(new Callback<Patient>() {
             @Override
-            public void onResponse(Call<List<Patient>> call, Response<List<Patient>> response) {
+            public void onResponse(Call<Patient> call, Response<Patient> response) {
                 Toast.makeText(getApplicationContext(), String.format("OK"), Toast.LENGTH_SHORT).show();
                 if(response.isSuccessful()) {
-                    patientList = response.body();
+                    patient = response.body();
                     //recyclerAdapter.setNotesList(patientsList);
+
+                    //
+                    String patientName = patient.getFullname();
+                    TextView textView = (TextView)findViewById(R.id.patient_fullname);
+                    textView.setText(patientName);
+
+                    //int patientImage = patientList.get(patientId.intValue()).getPhotoId();
+                    ImageView patientImageView = (ImageView)findViewById(R.id.patient_image);
+                    patientImageView.setImageDrawable(ContextCompat.getDrawable(PatientDetailsActivity.this,R.drawable.kid1));
+                    patientImageView.setContentDescription(patientName);
+
+                    String patientCategory = patient.getCategory();
+                    TextView categoryTxt = (TextView) findViewById(R.id.patient_category);
+                    categoryTxt.setText(patientCategory);
+
+                    String patientDescription = patient.getDescription();
+                    TextView descriptionTxt = (TextView) findViewById(R.id.patient_description);
+                    descriptionTxt.setText(patientDescription);
+
+                    String totalTenge = patient.getTotalTenge();
+                    TextView totalTengeTxt = (TextView) findViewById(R.id.totalTenge);
+                    totalTengeTxt.setText(totalTenge);
+
+                    String fundedPercent = patient.getFundedPercent();
+                    TextView fundedPercentTxt = (TextView) findViewById(R.id.fundedPercent);
+                    fundedPercentTxt.setText(fundedPercent);
+
+                    String daysLeft = patient.getDaysLeft();
+                    TextView daysLeftTxt = (TextView) findViewById(R.id.daysLeft);
+                    daysLeftTxt.setText(daysLeft);
+
+                    String city = patient.getCity();
+                    TextView cityTxt = (TextView) findViewById(R.id.city);
+                    cityTxt.setText(city);
+                    //
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Patient>> call, Throwable t) {
+            public void onFailure(Call<Patient> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), String.format("KO"), Toast.LENGTH_SHORT).show();
             }
 
@@ -84,38 +120,7 @@ public class PatientDetailsActivity extends AppCompatActivity{
         //
 
 
-        String patientName = patientList.get(patientId).getFullname();
-        TextView textView = (TextView)findViewById(R.id.patient_fullname);
-        textView.setText(patientName);
 
-        //int patientImage = patientList.get(patientId.intValue()).getPhotoId();
-        ImageView patientImageView = (ImageView)findViewById(R.id.patient_image);
-        patientImageView.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.kid1));
-        patientImageView.setContentDescription(patientName);
-
-        String patientCategory = patientList.get(patientId).getCategory();
-        TextView categoryTxt = (TextView) findViewById(R.id.patient_category);
-        categoryTxt.setText(patientCategory);
-
-        String patientDescription = patientList.get(patientId).getDescription();
-        TextView descriptionTxt = (TextView) findViewById(R.id.patient_description);
-        descriptionTxt.setText(patientDescription);
-
-        String totalTenge = patientList.get(patientId).getTotalTenge();
-        TextView totalTengeTxt = (TextView) findViewById(R.id.totalTenge);
-        totalTengeTxt.setText(totalTenge);
-
-        String fundedPercent = patientList.get(patientId).getFundedPercent();
-        TextView fundedPercentTxt = (TextView) findViewById(R.id.fundedPercent);
-        fundedPercentTxt.setText(fundedPercent);
-
-        String daysLeft = patientList.get(patientId).getDaysLeft();
-        TextView daysLeftTxt = (TextView) findViewById(R.id.daysLeft);
-        daysLeftTxt.setText(daysLeft);
-
-        String city = patientList.get(patientId).getCity();
-        TextView cityTxt = (TextView) findViewById(R.id.city);
-        cityTxt.setText(city);
 
         /*int patientId = (Integer)getIntent().getExtras().getInt(EXTRA_PATIENT_ID);
 
