@@ -43,7 +43,7 @@ public class PatientsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        RecyclerView kidsRecycler = (RecyclerView)inflater.inflate(R.layout.fragment_patients, container,
+        RecyclerView patientRecycler = (RecyclerView)inflater.inflate(R.layout.fragment_patients, container,
                 false);
         patientsList = new ArrayList<>();
 
@@ -96,10 +96,10 @@ public class PatientsFragment extends Fragment {
         });
 
 
-        kidsRecycler.setAdapter(adapter);
+        patientRecycler.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        kidsRecycler.setLayoutManager(layoutManager);
+        patientRecycler.setLayoutManager(layoutManager);
 
         adapter.setListener(new PatientsAdapter.Listener() {
             @Override
@@ -110,7 +110,7 @@ public class PatientsFragment extends Fragment {
             }
         });
 
-        return kidsRecycler;
+        return patientRecycler;
     }
 
 }

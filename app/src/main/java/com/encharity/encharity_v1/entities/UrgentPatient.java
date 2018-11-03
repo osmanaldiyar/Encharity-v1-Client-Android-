@@ -2,70 +2,109 @@ package com.encharity.encharity_v1.entities;
 
 import com.encharity.encharity_v1.R;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class UrgentPatient {
 
-    private int photoId;
-    private String fullname;
-    private String category;
-    private String description;
-    private String totalTenge;
-    private String fundedPercent;
-    private String daysLeft;
-    private String city;
+    @SerializedName("urgentPatientId")
+    @Expose
+    private Integer urgentPatientId;
+    @SerializedName("urgentPhotoId")
+    @Expose
+    private Integer urgentPhotoId;
+    @SerializedName("urgentFullname")
+    @Expose
+    private String urgentFullname;
+    @SerializedName("urgentCategory")
+    @Expose
+    private String urgentCategory;
+    @SerializedName("urgentDescription")
+    @Expose
+    private String urgentDescription;
+    @SerializedName("urgentTotalTenge")
+    @Expose
+    private String urgentTotalTenge;
+    @SerializedName("urgentFundedPercent")
+    @Expose
+    private String urgentFundedPercent;
+    @SerializedName("urgentDaysLeft")
+    @Expose
+    private String urgentDaysLeft;
+    @SerializedName("urgentCity")
+    @Expose
+    private String urgentCity;
 
-    public static final UrgentPatient[] URGENT_PATIENTS = {
-            new UrgentPatient(R.drawable.kid1,"Pavlov Ivan Petrovich","Urgent" ,
-                    "Urgent Lorem ipsum sit amet, consectetur adipiscing elit, sed do " +
-                            "eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    "150 000 KZT","10%","256 days left","Russia, Moscow"),
-            new UrgentPatient(R.drawable.kid2,"Alekseev Nikita Sergeevich","Urgent" ,
-                    "Urgent Lorem ipsum amet, consectetur adipiscing elit, sed do " +
-                            "eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    "250 000 KZT","60%","26 days left","Russia, St.Petersburg")
-    };
-
-    private UrgentPatient(int photoId, String fullname, String category, String description, String totalTenge,
-                          String fundedPercent, String daysLeft, String city) {
-        this.photoId = photoId;
-        this.fullname = fullname;
-        this.category = category;
-        this.description = description;
-        this.totalTenge = totalTenge;
-        this.fundedPercent = fundedPercent;
-        this.daysLeft = daysLeft;
-        this.city = city;
+    public Integer getUrgentPatientId() {
+        return urgentPatientId;
     }
 
-    public int getPhotoId() {
-        return photoId;
+    public void setUrgentPatientId(Integer urgentPatientId) {
+        this.urgentPatientId = urgentPatientId;
     }
 
-    public String getFullname() {
-        return fullname;
+    public Integer getUrgentPhotoId() {
+        return urgentPhotoId;
     }
 
-    public String getCategory() {
-        return category;
+    public void setUrgentPhotoId(Integer urgentPhotoId) {
+        this.urgentPhotoId = urgentPhotoId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getUrgentFullname() {
+        return urgentFullname;
     }
 
-    public String getTotalTenge() {
-        return totalTenge;
+    public void setUrgentFullname(String urgentFullname) {
+        this.urgentFullname = urgentFullname;
     }
 
-    public String getFundedPercent() {
-        return fundedPercent;
+    public String getUrgentCategory() {
+        return urgentCategory;
     }
 
-    public String getDaysLeft() {
-        return daysLeft;
+    public void setUrgentCategory(String urgentCategory) {
+        this.urgentCategory = urgentCategory;
     }
 
-    public String getCity() {
-        return city;
+    public String getUrgentDescription() {
+        return urgentDescription;
+    }
+
+    public void setUrgentDescription(String urgentDescription) {
+        this.urgentDescription = urgentDescription;
+    }
+
+    public String getUrgentTotalTenge() {
+        return urgentTotalTenge;
+    }
+
+    public void setUrgentTotalTenge(String urgentTotalTenge) {
+        this.urgentTotalTenge = urgentTotalTenge;
+    }
+
+    public String getUrgentFundedPercent() {
+        return urgentFundedPercent;
+    }
+
+    public void setUrgentFundedPercent(String urgentFundedPercent) {
+        this.urgentFundedPercent = urgentFundedPercent;
+    }
+
+    public String getUrgentDaysLeft() {
+        return urgentDaysLeft;
+    }
+
+    public void setUrgentDaysLeft(String urgentDaysLeft) {
+        this.urgentDaysLeft = urgentDaysLeft;
+    }
+
+    public String getUrgentCity() {
+        return urgentCity;
+    }
+
+    public void setUrgentCity(String urgentCity) {
+        this.urgentCity = urgentCity;
     }
 
 }

@@ -28,7 +28,8 @@
         <activity android:name=".archive.ArchiveActivity" />
         <activity android:name=".archive.ArchiveDetailsActivity" />
         <activity android:name=".blog.BlogActivity" />
-        <activity android:name=".blog.BlogDetailsActivity"></activity>
+        <activity android:name=".blog.BlogDetailsActivity" />
+        <activity android:name=".UrgentPatientDetailsActivity"></activity>
     </application>
 
 </manifest>
