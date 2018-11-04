@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.encharity.encharity_v1.R;
@@ -98,11 +99,13 @@ public class UrgentPatientsAdapter extends RecyclerView.Adapter<UrgentPatientsAd
         TextView totalTengeTextView = (TextView)cardView.findViewById(R.id.adults_totalTenge);
         totalTengeTextView.setText(urgentPatientsList.get(i).getUrgentTotalTenge());
         TextView fundedPercentTextView = (TextView)cardView.findViewById(R.id.adults_fundedPercent);
-        fundedPercentTextView.setText(urgentPatientsList.get(i).getUrgentFundedPercent());
+        fundedPercentTextView.setText(urgentPatientsList.get(i).getUrgentFundedPercent()+"%");
         TextView daysLeftTextView = (TextView)cardView.findViewById(R.id.adults_daysLeft);
         daysLeftTextView.setText(urgentPatientsList.get(i).getUrgentDaysLeft());
         TextView citiesTextView = (TextView)cardView.findViewById(R.id.adults_city);
         citiesTextView.setText(urgentPatientsList.get(i).getUrgentCity());
+        ProgressBar progressBar = (ProgressBar)cardView.findViewById(R.id.adults_progressBar);
+        progressBar.setProgress(Integer.parseInt(urgentPatientsList.get(i).getUrgentFundedPercent()));
 
         cardView.setOnClickListener(new View.OnClickListener(){
             @Override

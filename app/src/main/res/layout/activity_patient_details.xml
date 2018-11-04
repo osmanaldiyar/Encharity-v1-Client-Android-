@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:indeterminate="false"
                 android:max="100"
-                android:progress="20" />
+                android:progress="4"/>
 
             <LinearLayout
                 android:orientation="horizontal"

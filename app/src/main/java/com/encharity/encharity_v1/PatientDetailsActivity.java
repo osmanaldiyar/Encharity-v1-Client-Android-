@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -95,7 +96,7 @@ public class PatientDetailsActivity extends AppCompatActivity{
 
                     String fundedPercent = patient.getFundedPercent();
                     TextView fundedPercentTxt = (TextView) findViewById(R.id.fundedPercent);
-                    fundedPercentTxt.setText(fundedPercent);
+                    fundedPercentTxt.setText(fundedPercent+"%");
 
                     String daysLeft = patient.getDaysLeft();
                     TextView daysLeftTxt = (TextView) findViewById(R.id.daysLeft);
@@ -104,6 +105,10 @@ public class PatientDetailsActivity extends AppCompatActivity{
                     String city = patient.getCity();
                     TextView cityTxt = (TextView) findViewById(R.id.city);
                     cityTxt.setText(city);
+
+                    ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
+                    progressBar.setProgress(Integer.parseInt(patient.getFundedPercent()));
+
                     //
                 }
             }
