@@ -47,7 +47,8 @@ public class ArchiveDetailsActivity extends AppCompatActivity {
                     TextView textView = (TextView)findViewById(R.id.archive_details_title);
                     textView.setText(title);
 
-                    int archiveImage = archive.getArchivePhotoId();
+                    //int archiveImage = archive.getArchivePhotoId();
+                    int archiveImage = R.drawable.kid1;
                     ImageView archiveImageView = (ImageView)findViewById(R.id.archive_details_photo);
                     archiveImageView.setImageDrawable(ContextCompat.getDrawable(ArchiveDetailsActivity.this,archiveImage));
                     archiveImageView.setContentDescription(title);

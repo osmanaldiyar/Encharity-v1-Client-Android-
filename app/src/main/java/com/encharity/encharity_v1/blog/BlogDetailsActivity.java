@@ -24,7 +24,7 @@ public class BlogDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_archive_details);
+        setContentView(R.layout.activity_blog_details);
 
         //
 
@@ -45,7 +45,8 @@ public class BlogDetailsActivity extends AppCompatActivity {
                     TextView blogTextView = (TextView)findViewById(R.id.blog_details_title);
                     blogTextView.setText(blogTitle);
 
-                    int blogImage = blog.getBlogPhotoId();
+                    //int blogImage = blog.getBlogPhotoId();
+                    int blogImage = R.drawable.kid1;
                     ImageView blogImageView = (ImageView)findViewById(R.id.blog_details_photo);
                     blogImageView.setImageDrawable(ContextCompat.getDrawable(BlogDetailsActivity.this,blogImage));
                     blogImageView.setContentDescription(blogTitle);

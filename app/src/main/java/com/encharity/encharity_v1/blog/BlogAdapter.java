@@ -21,7 +21,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     private String[] titles;
     private String[] descriptions;*/
     private List<Blog> blogList;
-    private BlogAdapter.Listener listener;
+    private Listener listener;
 
     public interface Listener{
         void onClick(int position);
@@ -32,7 +32,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void setListener(BlogAdapter.Listener listener) {
+    public void setListener(Listener listener) {
         this.listener = listener;
     }
 
