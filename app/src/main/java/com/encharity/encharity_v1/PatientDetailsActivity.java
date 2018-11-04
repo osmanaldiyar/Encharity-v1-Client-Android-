@@ -62,7 +62,7 @@ public class PatientDetailsActivity extends AppCompatActivity{
                 .build();
 
         PatientService patientService = retrofit.create(PatientService.class);
-        int patientId = (Integer)getIntent().getExtras().getInt(EXTRA_PATIENT_ID);
+        int patientId = (Integer)getIntent().getExtras().getInt(EXTRA_PATIENT_ID) + 1;
         Call<Patient> repos = patientService.getPatient(patientId);
 
         repos.enqueue(new Callback<Patient>() {

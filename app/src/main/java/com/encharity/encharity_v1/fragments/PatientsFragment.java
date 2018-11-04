@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.encharity.encharity_v1.PatientDetailsActivity;
 import com.encharity.encharity_v1.R;
+import com.encharity.encharity_v1.api.APIUtils;
 import com.encharity.encharity_v1.api.PatientService;
 import com.encharity.encharity_v1.entities.Patient;
 import com.encharity.encharity_v1.recyclerViewAdapter.PatientsAdapter;
@@ -67,12 +68,8 @@ public class PatientsFragment extends Fragment {
             cities[i] = Patient.PATIENTS[i].getCity();
         }*/
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        PatientService patientService = retrofit.create(PatientService.class);
+        PatientService patientService = APIUtils.getPatientService();
         Call<List<Patient>> repos = patientService.getAllPatients();
 
         final PatientsAdapter adapter = new PatientsAdapter(patientsList/*kidsNames,kidsImages,kidsCategory,
@@ -90,7 +87,7 @@ public class PatientsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Patient>> call, Throwable t) {
-                Toast.makeText(getActivity(), String.format("KO"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), String.format("Please, check internet connection."), Toast.LENGTH_SHORT).show();
             }
 
         });

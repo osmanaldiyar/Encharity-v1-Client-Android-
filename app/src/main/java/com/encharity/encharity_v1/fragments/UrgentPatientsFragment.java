@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.encharity.encharity_v1.R;
 import com.encharity.encharity_v1.UrgentPatientDetailsActivity;
+import com.encharity.encharity_v1.api.APIUtils;
 import com.encharity.encharity_v1.api.UrgentPatientService;
 import com.encharity.encharity_v1.entities.UrgentPatient;
 import com.encharity.encharity_v1.recyclerViewAdapter.UrgentPatientsAdapter;
@@ -68,12 +69,7 @@ public class UrgentPatientsFragment extends Fragment {
             cities[i] = UrgentPatient.URGENT_PATIENTS[i].getCity();
         }*/
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        UrgentPatientService urgentPatientService = retrofit.create(UrgentPatientService.class);
+        UrgentPatientService urgentPatientService = APIUtils.getUrgentPatientService();
         Call<List<UrgentPatient>> repos = urgentPatientService.getAllUrgentPatients();
 
         final UrgentPatientsAdapter adapter = new UrgentPatientsAdapter(urgentPatientList/*adultsNames,adultsImages,adultsCategory,
@@ -91,7 +87,7 @@ public class UrgentPatientsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<UrgentPatient>> call, Throwable t) {
-                Toast.makeText(getActivity(), String.format("KO"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), String.format("Please, check internet connection."), Toast.LENGTH_SHORT).show();
             }
 
         });

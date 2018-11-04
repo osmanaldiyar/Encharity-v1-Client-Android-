@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.encharity.encharity_v1.R;
+import com.encharity.encharity_v1.api.APIUtils;
 import com.encharity.encharity_v1.api.ArchiveService;
 
 import java.util.ArrayList;
@@ -41,12 +42,9 @@ public class ArchiveActivity extends AppCompatActivity {
         }*/
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        ArchiveService archiveService = retrofit.create(ArchiveService.class);
+
+        ArchiveService archiveService = APIUtils.getArchiveService();
         Call<List<Archive>> repos = archiveService.getAllArchiveItems();
 
         final ArchiveAdapter archiveAdapter = new ArchiveAdapter(archiveList);
@@ -63,7 +61,7 @@ public class ArchiveActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Archive>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), String.format("KO"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format("Please, check internet connection."), Toast.LENGTH_SHORT).show();
             }
 
         });

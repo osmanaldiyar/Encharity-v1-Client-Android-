@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.encharity.encharity_v1.R;
+import com.encharity.encharity_v1.api.APIUtils;
 import com.encharity.encharity_v1.api.ArchiveService;
 
 import retrofit2.Call;
@@ -28,13 +29,10 @@ public class ArchiveDetailsActivity extends AppCompatActivity {
 
 
         //
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        ArchiveService archiveService = retrofit.create(ArchiveService.class);
-        int archiveId = (Integer)getIntent().getExtras().getInt(EXTRA_ARCHIVE_ID);
+
+        ArchiveService archiveService = APIUtils.getArchiveService();
+        int archiveId = (Integer)getIntent().getExtras().getInt(EXTRA_ARCHIVE_ID) + 1;
         Call<Archive> repos = archiveService.getArchive(archiveId);
 
         repos.enqueue(new Callback<Archive>() {
@@ -61,7 +59,7 @@ public class ArchiveDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Archive> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), String.format("KO"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format("Please, check internet connection."), Toast.LENGTH_SHORT).show();
             }
 
         });

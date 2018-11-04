@@ -58,7 +58,7 @@ public class UrgentPatientDetailsActivity extends AppCompatActivity {
                 .build();
 
         UrgentPatientService urgentPatientService = retrofit2.create(UrgentPatientService.class);
-        int urgentPatientId = (Integer)getIntent().getExtras().getInt(EXTRA_URGENT_PATIENT_ID);
+        int urgentPatientId = (Integer)getIntent().getExtras().getInt(EXTRA_URGENT_PATIENT_ID) + 1;
         Call<UrgentPatient> repos = urgentPatientService.getUrgentPatient(urgentPatientId);
 
         repos.enqueue(new Callback<UrgentPatient>() {
