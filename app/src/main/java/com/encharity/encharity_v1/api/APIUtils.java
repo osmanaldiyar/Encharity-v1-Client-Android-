@@ -19,6 +19,9 @@ public class APIUtils {
     public static UrgentPatientService getUrgentPatientService(){
         return RetrofitClient.getClient(API_URL).create(UrgentPatientService.class);
     }
+    public static InvestmentService getInvestmentService(){
+        return RetrofitClient.getClient(API_URL).create(InvestmentService.class);
+    }
 
 
 }

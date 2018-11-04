@@ -35,6 +35,7 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.ViewHold
 
     public ArchiveAdapter(List<Archive> archiveList/*int[] images, String[] titles, String[] descriptions*/) {
         this.archiveList = archiveList;
+        notifyDataSetChanged();
         /*this.images = images;
         this.titles = titles;
         this.descriptions = descriptions;*/

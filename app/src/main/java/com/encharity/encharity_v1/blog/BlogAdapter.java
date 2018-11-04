@@ -38,6 +38,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
 
     public BlogAdapter(List<Blog> blogList/*int[] images, String[] titles, String[] descriptions*/) {
         this.blogList= blogList;
+        notifyDataSetChanged();
         /*this.images = images;
         this.titles = titles;
         this.descriptions = descriptions;*/

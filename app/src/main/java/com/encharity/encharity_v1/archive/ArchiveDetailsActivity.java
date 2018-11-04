@@ -33,6 +33,7 @@ public class ArchiveDetailsActivity extends AppCompatActivity {
 
         ArchiveService archiveService = APIUtils.getArchiveService();
         int archiveId = (Integer)getIntent().getExtras().getInt(EXTRA_ARCHIVE_ID) + 1;
+        Toast.makeText(getApplicationContext(), String.format("id "+ archiveId), Toast.LENGTH_SHORT).show();
         Call<Archive> repos = archiveService.getArchive(archiveId);
 
         repos.enqueue(new Callback<Archive>() {

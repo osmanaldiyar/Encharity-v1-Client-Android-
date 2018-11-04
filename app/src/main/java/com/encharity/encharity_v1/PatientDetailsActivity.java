@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.encharity.encharity_v1.api.APIUtils;
 import com.encharity.encharity_v1.api.PatientService;
 import com.encharity.encharity_v1.entities.Patient;
 import com.encharity.encharity_v1.fragments.InvestmentsCardViewFragment;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PatientDetailsActivity extends AppCompatActivity{
 
-    public static String EXTRA_PATIENT_ID = "id";
+    public static String EXTRA_PATIENT_ID = "patientdetailsid";
     private Patient patient;
 
 
@@ -38,7 +39,7 @@ public class PatientDetailsActivity extends AppCompatActivity{
         setContentView(R.layout.activity_patient_details);
 
 
-        InvestmentsCardViewFragment fragment = new InvestmentsCardViewFragment();
+        final InvestmentsCardViewFragment fragment = new InvestmentsCardViewFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.investments_card_viewContainer,fragment);
         transaction.commit();
@@ -56,12 +57,9 @@ public class PatientDetailsActivity extends AppCompatActivity{
         //
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        PatientService patientService = retrofit.create(PatientService.class);
+
+        PatientService patientService = APIUtils.getPatientService();
         int patientId = (Integer)getIntent().getExtras().getInt(EXTRA_PATIENT_ID) + 1;
         Call<Patient> repos = patientService.getPatient(patientId);
 
@@ -112,7 +110,7 @@ public class PatientDetailsActivity extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<Patient> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), String.format("KO"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format("Please, check internet connection."), Toast.LENGTH_SHORT).show();
             }
 
         });

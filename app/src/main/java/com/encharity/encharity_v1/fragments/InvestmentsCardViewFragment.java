@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.encharity.encharity_v1.AllInvestmentsActivity;
 import com.encharity.encharity_v1.PatientDetailsActivity;
 import com.encharity.encharity_v1.R;
+import com.encharity.encharity_v1.entities.Patient;
+import com.encharity.encharity_v1.entities.UrgentPatient;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +40,6 @@ public class InvestmentsCardViewFragment extends Fragment implements View.OnClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         InvestmentsFragment fragment = new InvestmentsFragment();
-
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.detailsFragment_FrameLayout,fragment);
         transaction.commit();

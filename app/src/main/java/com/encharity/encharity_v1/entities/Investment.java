@@ -1,5 +1,54 @@
 package com.encharity.encharity_v1.entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class Investment {
+
+    @SerializedName("investmentId")
+    @Expose
+    private Long investmentId;
+    @SerializedName("amountOfInvestment")
+    @Expose
+    private String amountOfInvestment;
+    @SerializedName("dateOfInvestment")
+    @Expose
+    private String dateOfInvestment;
+
+    public Long getInvestmentId() {
+        return investmentId;
+    }
+
+    public void setInvestmentId(Long investmentId) {
+        this.investmentId = investmentId;
+    }
+
+    public String getAmountOfInvestment() {
+        return amountOfInvestment;
+    }
+
+    public void setAmountOfInvestment(String amountOfInvestment) {
+        this.amountOfInvestment = amountOfInvestment;
+    }
+
+    public String getDateOfInvestment() {
+        return dateOfInvestment;
+    }
+
+    public void setDateOfInvestment(String dateOfInvestment) {
+        this.dateOfInvestment = dateOfInvestment;
+    }
+
+    @Override
+    public String toString() {
+        return amountOfInvestment + " " + dateOfInvestment;
+    }
+}
+
+/*
 public class Investment {
 
     private String amountOfInvestment;
@@ -21,3 +70,4 @@ public class Investment {
         return amountOfInvestment + " " + dateOfInvestment;
     }
 }
+*/

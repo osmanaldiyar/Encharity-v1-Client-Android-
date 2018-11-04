@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.encharity.encharity_v1.api.APIUtils;
 import com.encharity.encharity_v1.api.UrgentPatientService;
 import com.encharity.encharity_v1.entities.UrgentPatient;
 import com.encharity.encharity_v1.fragments.InvestmentsCardViewFragment;
@@ -34,7 +35,7 @@ public class UrgentPatientDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_urgent_patient_details);
 
 
-        InvestmentsCardViewFragment fragment = new InvestmentsCardViewFragment();
+        final InvestmentsCardViewFragment fragment = new InvestmentsCardViewFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.investments_card_viewContainer,fragment);
         transaction.commit();
@@ -52,12 +53,8 @@ public class UrgentPatientDetailsActivity extends AppCompatActivity {
         //
 
 
-        Retrofit retrofit2 = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.195:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        UrgentPatientService urgentPatientService = retrofit2.create(UrgentPatientService.class);
+        UrgentPatientService urgentPatientService = APIUtils.getUrgentPatientService();
         int urgentPatientId = (Integer)getIntent().getExtras().getInt(EXTRA_URGENT_PATIENT_ID) + 1;
         Call<UrgentPatient> repos = urgentPatientService.getUrgentPatient(urgentPatientId);
 
@@ -108,7 +105,7 @@ public class UrgentPatientDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UrgentPatient> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), String.format("KO"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format("Please, check internet connection."), Toast.LENGTH_SHORT).show();
             }
 
         });

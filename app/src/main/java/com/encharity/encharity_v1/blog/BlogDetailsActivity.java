@@ -18,7 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BlogDetailsActivity extends AppCompatActivity {
-    public final static String EXTRA_BLOG_ID = "id";
+    public final static String EXTRA_BLOG_ID = "blogDetailsid";
     private Blog blog;
 
     @Override
@@ -31,6 +31,7 @@ public class BlogDetailsActivity extends AppCompatActivity {
 
         BlogService blogService = APIUtils.getBlogService();
         int blogId = (Integer)getIntent().getExtras().getInt(EXTRA_BLOG_ID) + 1;
+        Toast.makeText(getApplicationContext(), String.format("id "+ blogId), Toast.LENGTH_SHORT).show();
         Call<Blog> repos = blogService.getBlog(blogId);
 
         repos.enqueue(new Callback<Blog>() {
